@@ -1,5 +1,6 @@
 package com.immunopass.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,4 +16,9 @@ public interface OtpController {
             @RequestParam("identifier") String identifier,
             @RequestParam("identifier_type") String identifier_type,
             @RequestParam(value = "Otp", required = false) String otp);
+
+    @PostMapping
+    public ResponseEntity<?> verifyOtp(@RequestParam("identifier") String identifier,
+                             @RequestParam("identifier_type") String identifier_type,
+                             @RequestParam(value = "Otp", required = true) String otp) throws Exception;
 }
